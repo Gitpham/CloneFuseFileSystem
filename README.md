@@ -1,36 +1,3 @@
-# CS537 Fall 2024, Project 6
-
-## Updates
-
-## Administrivia 
-
-- **Due Dates:**
-    - Deadline for `mkfs.c` is by November 27, 2024 at 11:59 PM, *no slip days possible*
-    - Deadline for the rest is by December 6, 2024 at 11:59 PM
-- **Questions**: We will be using Piazza for all questions.
-- This project is to be done on the [lab machines](https://csl.cs.wisc.edu/docs/csl/2012-08-16-instructional-facilities/), so you can learn more about programming in C on a typical UNIX-based platform (Linux).
-- **Handing it in**:
-  -  Copy the whole project, including solution and tests folder, to ~cs537-1/handin/login/p6 where login is your CS login.  
-  -  Be sure to `make clean` before handing in your solution. 
-  -  Only one person from the group needs to submit the project.
-- **Slip Days**: 
-  - In case you need extra time on projects, you each will have 2 slip days for the final three projects. After the due date we will make a copy of the handin directory for on time grading. 
-  - To use a slip days or turn in your assignment late you will submit your files with an additional file that contains only a single digit number, which is the number of days late your assignment is(e.g 1, 2, 3). Each consecutive day we will make a copy of any directories which contain one of these slipdays.txt files. This file must be present when you submit you final submission, or we won't know to grade your code. 
-  - We will track your slip days and late submissions from project to project and begin to deduct percentages after you have used up your slip days.
-  - After using up your slip days you can get up to 90% if turned in 1 day late, 80% for 2 days late, and 70% for 3 days late, but for any single assignment we won't accept submissions after the third days without an exception. This means if you use both of your individual slip days on a single assignment you can only submit that assignment one additional day late for a total of 3 days late with a 10% deduction.
-  - Any exception will need to be requested from the instructors.
-
-  - Example slipdays.txt
-```
-1
-```
-- **Collaboration**: 
-  
-  - The assignment may be done by **yourself or with one partner**. Copying code from anyone else is considered cheating. [Read this](http://pages.cs.wisc.edu/~remzi/Classes/537/Spring2018/dontcheat.html) for more info on what is OK and what is not. Please help us all have a good semester by not doing this.
-  - When submitting each project, you will submit a `partners.txt` file containing the cslogins of both people in the group. One cslogin per line. Do not add commas or any other additional characters.
-  - Only one person from the group needs to submit the project.
-  - Partners will receive the same grades for the project.
-  - Slip days will be deducted from both members of the group if used. If group members have unequal numbers of slip days, the member with the lower number of days will not be penalized.
 
 # Introduction
 
@@ -131,7 +98,7 @@ Your implementation should use the structures provided in `wfs.h`.
 
 You'll need to create the following C files for this project: 
 
-## Part 1 --- `mkfs.c` (15% of the grade)
+## Part 1 --- `mkfs.c` 
 
 This C program initializes a file to an empty filesystem. I.e. to the state, where the filesystem can be mounted and other files and directories can be created under the root inode. The program receives three arguments: the raid mode, disk image file (multiple times), the number of inodes in the filesystem, and the number of data blocks in the system. The number of blocks should always be rounded up to the nearest multiple of 32 to prevent the data structures on disk from being misaligned. For example:
   ```sh
@@ -139,7 +106,7 @@ This C program initializes a file to an empty filesystem. I.e. to the state, whe
   ```
   initializes all disks (disk1 and disk2) to an empty filesystem with 32 inodes and 224 data blocks. The size of the inode and data bitmaps are determined by the number of blocks specified by `mkfs`. If `mkfs` finds that the disk image file is too small to accommodate the number of blocks, it should exit with return code -1. `mkfs` should write the superblock and root inode to the disk image.
 
-## Part 2 --- `wfs.c` (85% of the grade)
+## Part 2 --- `wfs.c` 
 
 This file contains the implementation for the FUSE filesystem. The bulk of your code will go in here. Running this program will mount the filesystem to a mount point, which are specifed by the arguments. The usage is
   ```sh
